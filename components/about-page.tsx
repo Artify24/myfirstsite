@@ -272,8 +272,8 @@ export default function AboutPageComponent() {
               About RK Coaching
             </h1>
             <p className="text-xl text-slate-600 max-w-4xl mx-auto mb-8 leading-relaxed">
-              We're on a mission to democratize quality education and make it accessible to every student across India.
-              Since 2018, we've been transforming lives through innovative learning solutions and expert guidance.
+              We&rsquo;re on a mission to democratize quality education and make it accessible to every student across India.
+              Since 2018, we&rsquo;ve been transforming lives through innovative learning solutions and expert guidance.
             </p>
           </motion.div>
 
@@ -314,9 +314,9 @@ export default function AboutPageComponent() {
                 financial constraints.
               </p>
               <p className="text-slate-600 leading-relaxed">
-                What started as a small initiative to help students in remote areas has now grown into India's most
+                What started as a small initiative to help students in remote areas has now grown into India&rsquo;s most
                 trusted educational platform, serving over 20 million students across 25+ states. Our success is
-                measured not just in numbers, but in the dreams we've helped fulfill and the lives we've transformed.
+                measured not just in numbers, but in the dreams we&rsquo;ve helped fulfill and the lives we&rsquo;ve transformed.
               </p>
               <div className="flex items-center space-x-4">
                 <Button className="bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white rounded-xl">
@@ -435,7 +435,7 @@ export default function AboutPageComponent() {
                   </div>
                   <h3 className="text-3xl font-bold mb-4 text-slate-700">Our Vision</h3>
                   <p className="text-slate-600 leading-relaxed mb-6">
-                    To become the world's most trusted and effective educational platform, empowering millions of
+                    To become the worlds most trusted and effective educational platform, empowering millions of
                     students to achieve their academic and career goals. We envision a future where quality education
                     knows no boundaries and every student can reach their full potential.
                   </p>
@@ -519,7 +519,7 @@ export default function AboutPageComponent() {
               Our Journey
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              From a small startup to India's most trusted educational platform
+              From a small startup to Indias most trusted educational platform
             </p>
           </motion.div>
 
@@ -681,7 +681,7 @@ export default function AboutPageComponent() {
               <CardContent className="p-0">
                 <h3 className="text-4xl font-bold mb-6 text-slate-700">Join Our Mission</h3>
                 <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
-                  Be part of India's largest educational transformation. Download RK Coaching App today and start your
+                  Be part of India&rsquo;s largest educational transformation. Download RK Coaching App today and start your
                   journey towards success.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">

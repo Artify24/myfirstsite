@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google"
 import "./globals.css"
+import { ReactNode } from "react"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -27,7 +28,11 @@ export const metadata = {
   },
 }
 
-export default function RootLayout({ children }) {
+interface ReactLayoutPage{
+  children: ReactNode
+}
+
+export default function RootLayout({ children }: ReactLayoutPage) {
   return (
     <html lang="en">
       <head>
