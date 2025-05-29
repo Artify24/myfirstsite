@@ -10,9 +10,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import {
-  Play,
   Download,
-  Star,
   Video,
   MessageCircle,
   FileText,
@@ -141,44 +139,12 @@ function RKLandingPage() {
     { number: 10, suffix: "L+", label: "Students", icon: BookOpen, color: "text-teal-500" },
   ]
 
-  const educators = [
-    {
-      name: "Dr. Rajesh Kumar",
-      subject: "Physics",
-      experience: "15+ Years",
-      rating: 4.9,
-      students: "50K+",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "IIT Delhi graduate with 15+ years of teaching experience in JEE Physics",
-      specialization: "Mechanics & Thermodynamics",
-    },
-    {
-      name: "Dr. Priya Sharma",
-      subject: "Chemistry",
-      experience: "12+ Years",
-      rating: 4.8,
-      students: "45K+",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "AIIMS graduate specializing in Organic Chemistry with proven NEET results",
-      specialization: "Organic & Inorganic Chemistry",
-    },
-    {
-      name: "Prof. Amit Singh",
-      subject: "Mathematics",
-      experience: "18+ Years",
-      rating: 4.9,
-      students: "60K+",
-      image: "/placeholder.svg?height=200&width=200",
-      bio: "Former IIT professor with exceptional teaching methods and student success",
-      specialization: "Calculus & Algebra",
-    },
-  ]
 
   const testimonials = [
     {
       name: "Arjun Patel",
-      exam: "JEE Advanced",
-      rank: "AIR 47",
+      exam: "Engineering SEM 1",
+      rank: "CGPA 9.8", 
       image: "/placeholder.svg?height=80&width=80",
       quote:
         "This app transformed my preparation completely. The personalized study plans and doubt clearing sessions helped me achieve my dream rank!",
@@ -186,7 +152,7 @@ function RKLandingPage() {
     },
     {
       name: "Sneha Reddy",
-      exam: "NEET",
+      exam: "JEE Main",
       rank: "AIR 156",
       image: "/placeholder.svg?height=80&width=80",
       quote:
@@ -195,7 +161,7 @@ function RKLandingPage() {
     },
     {
       name: "Rohit Kumar",
-      exam: "UPSC",
+      exam: "NEET",
       rank: "AIR 23",
       image: "/placeholder.svg?height=80&width=80",
       quote:
@@ -411,8 +377,8 @@ function RKLandingPage() {
               <div className="mx-auto w-72 h-72 mb-8 relative">
                 <div className="absolute inset-0 bg-gradient-to-r from-[rgb(37,101,118)]/20 to-orange-200/30 rounded-full blur-2xl"></div>
                 <Image
-                  src="/placeholder.svg?height=288&width=288"
-                  alt="Expert teacher illustration"
+                  src="/images.jpg"
+                  alt="LOGO"
                   width={288}
                   height={288}
                   className="relative z-10 rounded-full border-4 border-white/50 shadow-2xl backdrop-blur-sm"
@@ -433,7 +399,7 @@ function RKLandingPage() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-slate-700 via-[rgb(37,101,118)] to-orange-600 bg-clip-text text-transparent leading-tight"
           >
-            Crack NEET/JEE with India&apos;s Most Trusted Coaching App
+            EDUCATION BANAYE AASSAN!
           </motion.h1>
 
           <motion.p
@@ -548,75 +514,7 @@ function RKLandingPage() {
         </div>
       </section>
 
-      {/* Top Educators Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-700 to-orange-600 bg-clip-text text-transparent">
-              Learn from India&apos;s Best Educators
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Our expert faculty brings years of experience and proven teaching methodologies
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {educators.map((educator, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02 }}
-                className="group"
-              >
-                <Card className="bg-white/60 backdrop-blur-lg border-white/50 hover:bg-white/80 transition-all duration-300 rounded-3xl shadow-lg hover:shadow-xl overflow-hidden border-0">
-                  <CardContent className="p-8 text-center">
-                    <div className="relative mb-6">
-                      <div className="absolute inset-0 bg-gradient-to-r from-[rgb(37,101,118)]/20 to-orange-200/30 rounded-full blur-lg"></div>
-                      <Image
-                        src={educator.image || "/placeholder.svg"}
-                        alt={educator.name}
-                        width={120}
-                        height={120}
-                        className="relative z-10 rounded-full mx-auto border-4 border-white/70 shadow-lg"
-                      />
-                      <div className="absolute -bottom-2 -right-2 bg-gradient-to-r from-[rgb(37,101,118)] to-teal-500 text-white rounded-full p-2 shadow-lg">
-                        <Video className="h-4 w-4" />
-                      </div>
-                    </div>
-                    <h3 className="text-xl font-bold mb-2 text-slate-700">{educator.name}</h3>
-                    <p className="text-[rgb(37,101,118)] font-semibold mb-1">{educator.subject}</p>
-                    <p className="text-slate-500 text-sm mb-3">{educator.specialization}</p>
-                    <p className="text-slate-600 text-sm mb-4 leading-relaxed">{educator.bio}</p>
-                    <div className="flex justify-between items-center text-sm mb-4">
-                      <span className="flex items-center bg-amber-50 px-2 py-1 rounded-lg">
-                        <Star className="h-4 w-4 text-amber-500 mr-1 fill-current" />
-                        <span className="text-slate-700 font-medium">{educator.rating}</span>
-                      </span>
-                      <span className="text-slate-600 bg-slate-50 px-2 py-1 rounded-lg">{educator.experience}</span>
-                      <span className="text-[rgb(37,101,118)] bg-[rgb(37,101,118)]/10 px-2 py-1 rounded-lg font-medium">
-                        {educator.students}
-                      </span>
-                    </div>
-                    <Button className="w-full bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white rounded-xl border-0">
-                      <Play className="mr-2 h-4 w-4" />
-                      Watch Demo Class
-                    </Button>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+     
 
       {/* Courses & Subjects Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
@@ -642,25 +540,25 @@ function RKLandingPage() {
                 value="jee"
                 className="rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-[rgb(37,101,118)] data-[state=active]:to-teal-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300"
               >
-                JEE
+                ENGINEERING
               </TabsTrigger>
               <TabsTrigger
                 value="neet"
                 className="rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-orange-500 data-[state=active]:to-orange-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300"
               >
-                NEET
+                JEE
               </TabsTrigger>
               <TabsTrigger
                 value="upsc"
                 className="rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-amber-500 data-[state=active]:to-amber-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300"
               >
-                UPSC
+                NEET
               </TabsTrigger>
               <TabsTrigger
                 value="boards"
                 className="rounded-xl data-[state=active]:bg-gradient-to-r data-[state=active]:from-teal-500 data-[state=active]:to-teal-600 data-[state=active]:text-white data-[state=active]:shadow-lg transition-all duration-300"
               >
-                Boards
+                MHT-CET
               </TabsTrigger>
             </TabsList>
 
