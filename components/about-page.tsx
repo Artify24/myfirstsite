@@ -20,7 +20,7 @@ import {
   Instagram,
   Facebook,
   Youtube,
-  X
+  X,
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -32,7 +32,6 @@ const stats = [
   { number: 500, suffix: "+", label: "Expert Educators", icon: GraduationCap, color: "text-amber-500" },
   { number: 25, suffix: "+", label: "States Covered", icon: Globe, color: "text-teal-500" },
 ]
-
 
 const values = [
   {
@@ -61,10 +60,6 @@ const values = [
   },
 ]
 
-
-
-
-
 // Educational SVG Component
 function EducationalIllustration() {
   return (
@@ -80,22 +75,18 @@ function EducationalIllustration() {
           <stop offset="100%" stopColor="rgb(20,184,166)" />
         </linearGradient>
       </defs>
-
       {/* Background Circle */}
       <circle cx="300" cy="250" r="200" fill="url(#grad1)" />
-
       {/* Books Stack */}
       <rect x="100" y="350" width="80" height="12" rx="2" fill="rgb(37,101,118)" />
       <rect x="105" y="340" width="70" height="12" rx="2" fill="rgb(245,158,11)" />
       <rect x="110" y="330" width="60" height="12" rx="2" fill="rgb(20,184,166)" />
       <rect x="115" y="320" width="50" height="12" rx="2" fill="rgb(239,68,68)" />
-
       {/* Laptop/Computer */}
       <rect x="250" y="280" width="120" height="80" rx="8" fill="rgb(71,85,105)" />
       <rect x="260" y="290" width="100" height="60" rx="4" fill="rgb(248,250,252)" />
       <rect x="290" y="365" width="40" height="4" rx="2" fill="rgb(71,85,105)" />
       <rect x="280" y="369" width="60" height="8" rx="4" fill="rgb(71,85,105)" />
-
       {/* Screen Content - Graph */}
       <polyline
         points="270,330 280,320 290,325 300,315 310,320 320,310 330,315 340,305"
@@ -107,23 +98,19 @@ function EducationalIllustration() {
       <circle cx="300" cy="315" r="2" fill="rgb(245,158,11)" />
       <circle cx="320" cy="310" r="2" fill="rgb(20,184,166)" />
       <circle cx="340" cy="305" r="2" fill="rgb(239,68,68)" />
-
       {/* Students/People */}
       {/* Student 1 */}
       <circle cx="150" cy="200" r="20" fill="rgb(254,215,170)" />
       <rect x="140" y="220" width="20" height="30" rx="10" fill="rgb(37,101,118)" />
       <rect x="135" y="235" width="30" height="15" rx="7" fill="rgb(245,158,11)" />
-
       {/* Student 2 */}
       <circle cx="450" cy="180" r="20" fill="rgb(254,215,170)" />
       <rect x="440" y="200" width="20" height="30" rx="10" fill="rgb(20,184,166)" />
       <rect x="435" y="215" width="30" height="15" rx="7" fill="rgb(239,68,68)" />
-
       {/* Graduation Cap */}
       <polygon points="300,120 280,130 320,130" fill="rgb(37,101,118)" />
       <rect x="295" y="115" width="10" height="15" rx="2" fill="rgb(37,101,118)" />
       <circle cx="300" cy="110" r="3" fill="rgb(245,158,11)" />
-
       {/* Floating Elements */}
       {/* Mathematical Symbols */}
       <text x="400" y="150" fontSize="24" fill="rgb(37,101,118)" opacity="0.6">
@@ -138,19 +125,16 @@ function EducationalIllustration() {
       <text x="80" y="180" fontSize="16" fill="rgb(239,68,68)" opacity="0.6">
         √
       </text>
-
       {/* Light Bulb */}
       <circle cx="480" cy="120" r="12" fill="rgb(245,158,11)" opacity="0.8" />
       <rect x="476" y="132" width="8" height="6" rx="1" fill="rgb(245,158,11)" opacity="0.8" />
       <line x1="470" y1="110" x2="490" y2="110" stroke="rgb(245,158,11)" strokeWidth="2" opacity="0.6" />
       <line x1="470" y1="130" x2="490" y2="130" stroke="rgb(245,158,11)" strokeWidth="2" opacity="0.6" />
-
       {/* Trophy */}
       <rect x="500" y="350" width="20" height="25" rx="2" fill="rgb(245,158,11)" />
       <ellipse cx="510" cy="345" rx="15" ry="8" fill="rgb(245,158,11)" />
       <rect x="505" y="375" width="10" height="8" rx="2" fill="rgb(120,113,108)" />
       <circle cx="510" cy="355" r="3" fill="rgb(37,101,118)" />
-
       {/* Connecting Lines/Network */}
       <line
         x1="150"
@@ -182,7 +166,6 @@ function EducationalIllustration() {
         opacity="0.3"
         strokeDasharray="5,5"
       />
-
       {/* Floating Particles */}
       <circle cx="120" cy="100" r="3" fill="rgb(37,101,118)" opacity="0.4" />
       <circle cx="520" cy="80" r="2" fill="rgb(245,158,11)" opacity="0.4" />
@@ -196,13 +179,21 @@ function EducationalIllustration() {
 export default function AboutPageComponent() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen((prev) => !prev)
+  }
+
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-teal-50/50 text-slate-800">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-16">
-             <Link href="/" className="flex items-center space-x-2">
+          <div className="flex items-center justify-between h-16">
+            <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/rkLogo.png?height=40&width=120"
                 alt="RK Coaching Logo"
@@ -235,65 +226,74 @@ export default function AboutPageComponent() {
               </Button>
             </nav>
 
-            {/* Mobile menu button */}
-            <button className="lg:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-              {mobileMenuOpen ? (
-                <X className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600" />
-              ) : (
-                <Menu className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600" />
-              )}
-            </button>
+            {/* Mobile menu button - Made more visible */}
+            <div className="lg:hidden">
+              <button
+                className="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-colors shadow-sm"
+                onClick={toggleMobileMenu}
+                aria-label="Toggle mobile menu"
+                type="button"
+              >
+                {mobileMenuOpen ? <X className="h-6 w-6 text-gray-700" /> : <Menu className="h-6 w-6 text-gray-700" />}
+              </button>
+            </div>
           </div>
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <div className="lg:hidden">
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+            <motion.div
+              className="lg:hidden"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 shadow-lg">
                 <Link
                   href="/"
-                  className="block px-3 py-2 text-gray-600 hover:text-[rgb(37,101,118)] text-sm"
-                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-3 py-3 text-gray-600 hover:text-[rgb(37,101,118)] text-base rounded-md hover:bg-gray-50 transition-colors"
+                  onClick={closeMobileMenu}
                 >
                   Home
                 </Link>
                 <Link
                   href="/about"
-                  className="block px-3 py-2 text-[rgb(37,101,118)] font-medium text-sm"
-                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-3 py-3 text-[rgb(37,101,118)] font-medium text-base rounded-md bg-blue-50"
+                  onClick={closeMobileMenu}
                 >
                   About
                 </Link>
                 <Link
                   href="/success-stories"
-                  className="block px-3 py-2 text-gray-600 hover:text-[rgb(37,101,118)] text-sm"
-                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-3 py-3 text-gray-600 hover:text-[rgb(37,101,118)] text-base rounded-md hover:bg-gray-50 transition-colors"
+                  onClick={closeMobileMenu}
                 >
                   Success Stories
                 </Link>
                 <Link
                   href="/contact"
-                  className="block px-3 py-2 text-gray-600 hover:text-[rgb(37,101,118)] text-sm"
-                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-3 py-3 text-gray-600 hover:text-[rgb(37,101,118)] text-base rounded-md hover:bg-gray-50 transition-colors"
+                  onClick={closeMobileMenu}
                 >
                   Contact
                 </Link>
                 <Link
                   href="/blog"
-                  className="block px-3 py-2 text-gray-600 hover:text-[rgb(37,101,118)] text-sm"
-                  onClick={() => setMobileMenuOpen(false)}
+                  className="block px-3 py-3 text-gray-600 hover:text-[rgb(37,101,118)] text-base rounded-md hover:bg-gray-50 transition-colors"
+                  onClick={closeMobileMenu}
                 >
                   Blog
                 </Link>
                 <div className="px-3 py-2">
                   <Button
-                    className="w-full bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm"
-                    onClick={() => setMobileMenuOpen(false)}
+                    className="w-full bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-base py-3"
+                    onClick={closeMobileMenu}
                   >
                     Download App
                   </Button>
                 </div>
               </div>
-            </div>
+            </motion.div>
           )}
         </div>
       </header>
@@ -390,6 +390,7 @@ export default function AboutPageComponent() {
               These numbers represent the trust millions of students and parents have placed in us
             </p>
           </motion.div>
+
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {stats.map((stat, index) => (
               <motion.div
@@ -517,6 +518,7 @@ export default function AboutPageComponent() {
               These values guide every decision we make and every solution we create
             </p>
           </motion.div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
             {values.map((value, index) => (
               <motion.div
