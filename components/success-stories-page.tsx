@@ -93,9 +93,10 @@ const videoTestimonials = [
 ];
 
 export default function SuccessStoriesComponent() {
-  
-  const [selectedCategory, setSelectedCategory] = useState("All"); // @typescript-eslint/no-unused-vars
-  const [searchQuery, setSearchQuery] = useState(""); // @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [selectedCategory, setSelectedCategory] = useState("All"); 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [searchQuery, setSearchQuery] = useState(""); 
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false) ;
 
   const filteredStories = videoTestimonials.filter((story) => {

@@ -8,7 +8,6 @@ import {
   Users,
   TrendingUp,
   GraduationCap,
-  Award,
   Target,
   Heart,
   Globe,
@@ -21,9 +20,7 @@ import {
   Instagram,
   Facebook,
   Youtube,
-  X,
-  Trophy,
-  Zap,
+  X
 } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
