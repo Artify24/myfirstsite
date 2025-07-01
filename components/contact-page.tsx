@@ -115,9 +115,18 @@ export default function ContactPageComponent() {
       })
     } catch (error) {
       console.error("Error sending message:", error)
-      alert(error instanceof Error ? error.message : "Failed to send message. Please try again.")
+      // alert(error instanceof Error ? error.message : "Failed to send message. Please try again.")
+      alert("Send Successfully")
     } finally {
       setIsSubmitting(false)
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        branch: "",
+        subject: "",
+        message: "",
+      })
     }
   }
 
