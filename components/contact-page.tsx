@@ -24,125 +24,19 @@ import Link from "next/link";
 const branches = [
   {
     id: 1,
-    name: "Mumbai Headquarters",
-    type: "Headquarters",
-    address: "RK Tower, 15th Floor, Bandra Kurla Complex, Mumbai - 400051",
-    phone: "+91 98765 43210",
-    email: "mumbai@rkcoaching.com",
-    timings: "Mon-Sat: 9:00 AM - 8:00 PM",
-    manager: "Rajesh Kumar",
-    students: "25,000+",
-    established: "2018",
-    image: "/placeholder.svg?height=300&width=400",
-    features: ["Live Classes", "Doubt Solving", "Mock Tests", "Counseling"],
-    coordinates: { lat: 19.0596, lng: 72.8295 },
-    rating: 4.9,
-    reviews: 1250,
+    name: "Mumbai ",
   },
   {
     id: 2,
-    name: "Delhi Branch",
-    type: "Regional Office",
-    address: "RK Education Hub, Connaught Place, New Delhi - 110001",
-    phone: "+91 98765 43211",
-    email: "delhi@rkcoaching.com",
-    timings: "Mon-Sat: 9:00 AM - 8:00 PM",
-    manager: "Priya Sharma",
-    students: "18,000+",
-    established: "2019",
-    image: "/placeholder.svg?height=300&width=400",
-    features: ["UPSC Coaching", "Live Classes", "Study Material", "Mentoring"],
-    coordinates: { lat: 28.6139, lng: 77.209 },
-    rating: 4.8,
-    reviews: 980,
+    name: "Nerul",
   },
   {
     id: 3,
-    name: "Bangalore Branch",
-    type: "Tech Center",
-    address: "RK Tech Park, Electronic City, Bangalore - 560100",
-    phone: "+91 98765 43212",
-    email: "bangalore@rkcoaching.com",
-    timings: "Mon-Sat: 9:00 AM - 8:00 PM",
-    manager: "Amit Singh",
-    students: "22,000+",
-    established: "2020",
-    image: "/placeholder.svg?height=300&width=400",
-    features: [
-      "AI Learning",
-      "Tech Support",
-      "App Development",
-      "Innovation Lab",
-    ],
-    coordinates: { lat: 12.9716, lng: 77.5946 },
-    rating: 4.9,
-    reviews: 1100,
+    name: "Dardar",
   },
   {
     id: 4,
-    name: "Hyderabad Branch",
-    type: "Regional Office",
-    address: "RK Learning Center, HITEC City, Hyderabad - 500081",
-    phone: "+91 98765 43213",
-    email: "hyderabad@rkcoaching.com",
-    timings: "Mon-Sat: 9:00 AM - 8:00 PM",
-    manager: "Sneha Reddy",
-    students: "15,000+",
-    established: "2021",
-    image: "/placeholder.svg?height=300&width=400",
-    features: [
-      "NEET Coaching",
-      "Medical Entrance",
-      "Biology Lab",
-      "Career Guidance",
-    ],
-    coordinates: { lat: 17.385, lng: 78.4867 },
-    rating: 4.7,
-    reviews: 750,
-  },
-  {
-    id: 5,
-    name: "Pune Branch",
-    type: "Regional Office",
-    address: "RK Campus, Koregaon Park, Pune - 411001",
-    phone: "+91 98765 43214",
-    email: "pune@rkcoaching.com",
-    timings: "Mon-Sat: 9:00 AM - 8:00 PM",
-    manager: "Karthik Menon",
-    students: "12,000+",
-    established: "2021",
-    image: "/placeholder.svg?height=300&width=400",
-    features: [
-      "JEE Coaching",
-      "Engineering Prep",
-      "Physics Lab",
-      "Mathematics Center",
-    ],
-    coordinates: { lat: 18.5204, lng: 73.8567 },
-    rating: 4.8,
-    reviews: 650,
-  },
-  {
-    id: 6,
-    name: "Kolkata Branch",
-    type: "Regional Office",
-    address: "RK Education Center, Salt Lake, Kolkata - 700064",
-    phone: "+91 98765 43215",
-    email: "kolkata@rkcoaching.com",
-    timings: "Mon-Sat: 9:00 AM - 8:00 PM",
-    manager: "Ananya Singh",
-    students: "10,000+",
-    established: "2022",
-    image: "/placeholder.svg?height=300&width=400",
-    features: [
-      "Board Exams",
-      "Competitive Exams",
-      "Language Support",
-      "Cultural Programs",
-    ],
-    coordinates: { lat: 22.5726, lng: 88.3639 },
-    rating: 4.6,
-    reviews: 420,
+    name: "Borivali",
   },
 ];
 
@@ -203,10 +97,31 @@ export default function ContactPageComponent() {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // Handle form submission
-    console.log("Form submitted:", formData);
+     const res = await fetch("/api/Registration", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+    if (!res.ok) {
+      console.error("Failed to send message" );
+      return;
+    }
+    else{
+      alert("Message sent successfully!");
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        branch: "",
+        subject: "",
+        message: "",
+      });
+    }
   };
 
   return (
@@ -466,6 +381,7 @@ export default function ContactPageComponent() {
                       <Input
                         name="phone"
                         type="tel"
+                        maxLength={10}
                         value={formData.phone}
                         onChange={handleInputChange}
                         placeholder="Enter your phone number"

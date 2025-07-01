@@ -1201,52 +1201,6 @@ function RKLandingPage() {
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            viewport={{ once: true }}
-            className="max-w-2xl mx-auto"
-          >
-            <Card className="bg-white/60 backdrop-blur-lg border-white/50 rounded-2xl sm:rounded-3xl shadow-lg p-4 sm:p-6 lg:p-8 border-0">
-              <CardHeader className="p-0 mb-4 sm:mb-6">
-                <CardTitle className="text-xl sm:text-2xl font-bold text-center text-slate-700">
-                  Send us a message
-                </CardTitle>
-                <CardDescription className="text-center text-slate-600 text-sm sm:text-base">
-                  We&apos;ll get back to you within 24 hours
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="p-0">
-                <form className="space-y-3 sm:space-y-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                    <Input
-                      placeholder="Your Name"
-                      className="bg-white/50 border-white/50 text-slate-700 placeholder:text-slate-500 rounded-xl text-sm sm:text-base"
-                    />
-                    <Input
-                      type="email"
-                      placeholder="Your Email"
-                      className="bg-white/50 border-white/50 text-slate-700 placeholder:text-slate-500 rounded-xl text-sm sm:text-base"
-                    />
-                  </div>
-                  <Input
-                    placeholder="Subject"
-                    className="bg-white/50 border-white/50 text-slate-700 placeholder:text-slate-500 rounded-xl text-sm sm:text-base"
-                  />
-                  <Textarea
-                    placeholder="Your Message"
-                    rows={4}
-                    className="bg-white/50 border-white/50 text-slate-700 placeholder:text-slate-500 rounded-xl text-sm sm:text-base"
-                  />
-                  <Button className="w-full bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white rounded-xl border-0 text-sm sm:text-base">
-                    <Send className="mr-2 h-4 w-4" />
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
         </div>
       </section>
 
