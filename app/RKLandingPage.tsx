@@ -22,7 +22,6 @@ import {
   Youtube,
   Instagram,
   Facebook,
-  Send,
   ChevronLeft,
   ChevronRight,
   Smartphone,
