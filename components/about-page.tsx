@@ -179,24 +179,19 @@ function EducationalIllustration() {
 export default function AboutPageComponent() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen((prev) => !prev)
-  }
-
-  const closeMobileMenu = () => {
-    setMobileMenuOpen(false)
-  }
-
+  // The header is fixed and its height is h-14 (56px) on mobile, h-16 (64px) on sm+ screens
+  // Add padding-top to the main wrapper to prevent layout shift
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-teal-50/50 text-slate-800">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-teal-50/50 text-slate-800 pt-14 sm:pt-16">
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-14 sm:h-16">
+            {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
               <Image
                 src="/rkLogo.png?height=40&width=120"
-                alt="RK Coaching Logo"
+                alt="RK Coaching Logo"  
                 width={120}
                 height={40}
                 className="w-24 sm:w-32 md:w-36 h-auto"
@@ -206,10 +201,10 @@ export default function AboutPageComponent() {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-4 xl:space-x-6">
-              <Link href="/" className="text-gray-600 hover:text-[rgb(37,101,118)] text-sm xl:text-base">
+              <Link href="/" className=" text-gray-600 font-medium text-sm xl:text-base">
                 Home
               </Link>
-              <Link href="/about" className="text-[rgb(37,101,118)] font-medium text-sm xl:text-base">
+              <Link href="/about" className=" text-[rgb(37,101,118)] hover:text-[rgb(37,101,118)] text-sm xl:text-base">
                 About
               </Link>
               <Link href="/success-stories" className="text-gray-600 hover:text-[rgb(37,101,118)] text-sm xl:text-base">
@@ -226,74 +221,65 @@ export default function AboutPageComponent() {
               </Button>
             </nav>
 
-            {/* Mobile menu button - Made more visible */}
-            <div className="lg:hidden">
-              <button
-                className="flex items-center justify-center w-10 h-10 rounded-lg border border-gray-300 bg-white hover:bg-gray-50 transition-colors shadow-sm"
-                onClick={toggleMobileMenu}
-                aria-label="Toggle mobile menu"
-                type="button"
-              >
-                {mobileMenuOpen ? <X className="h-6 w-6 text-gray-700" /> : <Menu className="h-6 w-6 text-gray-700" />}
-              </button>
-            </div>
+            {/* Mobile menu button */}
+            <button className="lg:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {mobileMenuOpen ? (
+                <X className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600" />
+              ) : (
+                <Menu className="h-5 w-5 sm:h-6 sm:w-6 text-gray-600" />
+              )}
+            </button>
           </div>
 
           {/* Mobile Navigation */}
           {mobileMenuOpen && (
-            <motion.div
-              className="lg:hidden"
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200 shadow-lg">
+            <div className="lg:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
                 <Link
                   href="/"
-                  className="block px-3 py-3 text-gray-600 hover:text-[rgb(37,101,118)] text-base rounded-md hover:bg-gray-50 transition-colors"
-                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 text-gray-600 hover:text-[rgb(37,101,118)]  text-sm"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Home
                 </Link>
                 <Link
                   href="/about"
-                  className="block px-3 py-3 text-[rgb(37,101,118)] font-medium text-base rounded-md bg-blue-50"
-                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 text-[rgb(37,101,118)] font-medium  text-sm"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   About
                 </Link>
                 <Link
                   href="/success-stories"
-                  className="block px-3 py-3 text-gray-600 hover:text-[rgb(37,101,118)] text-base rounded-md hover:bg-gray-50 transition-colors"
-                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 text-gray-600 hover:text-[rgb(37,101,118)] text-sm"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Success Stories
                 </Link>
                 <Link
                   href="/contact"
-                  className="block px-3 py-3 text-gray-600 hover:text-[rgb(37,101,118)] text-base rounded-md hover:bg-gray-50 transition-colors"
-                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 text-gray-600 hover:text-[rgb(37,101,118)] text-sm"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Contact
                 </Link>
                 <Link
                   href="/blog"
-                  className="block px-3 py-3 text-gray-600 hover:text-[rgb(37,101,118)] text-base rounded-md hover:bg-gray-50 transition-colors"
-                  onClick={closeMobileMenu}
+                  className="block px-3 py-2 text-gray-600 hover:text-[rgb(37,101,118)] text-sm"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Blog
                 </Link>
                 <div className="px-3 py-2">
                   <Button
-                    className="w-full bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-base py-3"
-                    onClick={closeMobileMenu}
+                    className="w-full bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm"
+                    onClick={() => setMobileMenuOpen(false)}
                   >
                     Download App
                   </Button>
                 </div>
               </div>
-            </motion.div>
+            </div>
           )}
         </div>
       </header>
@@ -345,16 +331,10 @@ export default function AboutPageComponent() {
             >
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-700">Our Story</h2>
               <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                RK Coaching was born from a simple yet powerful vision: to bridge the gap between quality education and
-                accessibility. Founded by Rajesh Kumar, an IIT Delhi alumnus, our journey began when he realized that
-                millions of talented students across India lacked access to quality coaching due to geographical and
-                financial constraints.
+                RKDEMY is a premier coaching institute dedicated to Empowering Youth Through Education by providing high-quality, simplified, and result-oriented learning experiences. With a legacy of 14+ years, we have successfully trained 5,00,000+ students across 11th/12th Science, JEE/MH-CET, Engineering Diploma/Degree, and SkillTech courses, helping them build strong academic foundations and achieve their career goals. Our team of expert faculty, innovative teaching methodologies, and cutting-edge E-Learning App make education accessible, engaging, and effective for students from all backgrounds. 
               </p>
               <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                What started as a small initiative to help students in remote areas has now grown into India&rsquo;s
-                most trusted educational platform, serving over 20 million students across 25+ states. Our success is
-                measured not just in numbers, but in the dreams we&rsquo;ve helped fulfill and the lives we&rsquo;ve
-                transformed.
+               With our expansion into Skill Development & Placement Solutions, RKDEMY now bridges the gap between campus and corporates, providing students with industry-relevant training, career guidance, and job placement opportunities. Whether through offline coaching, online learning, or career-focused programs, RKDEMY is committed to shaping the future of students and empowering them with knowledge, confidence, and success.
               </p>
               <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-3 sm:space-y-0 sm:space-x-4">
                 <Button className="bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white rounded-xl text-sm sm:text-base w-full sm:w-auto">
