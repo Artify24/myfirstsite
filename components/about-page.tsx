@@ -25,6 +25,7 @@ import {
 import Image from "next/image"
 import Link from "next/link"
 import { OurTeam } from "./OurTeam"
+import { useRouter } from "next/navigation"
 
 const stats = [
   { number: 20, suffix: "M+", label: "Students Served", icon: Users, color: "text-[rgb(37,101,118)]" },
@@ -177,7 +178,8 @@ function EducationalIllustration() {
 }
 
 export default function AboutPageComponent() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
   // The header is fixed and its height is h-14 (56px) on mobile, h-16 (64px) on sm+ screens
   // Add padding-top to the main wrapper to prevent layout shift
@@ -273,7 +275,7 @@ export default function AboutPageComponent() {
                 <div className="px-3 py-2">
                   <Button
                     className="w-full bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm"
-                    onClick={() => {setMobileMenuOpen(false); window.open("https://yheiw.courses.store/")} }
+                    onClick={() => {setMobileMenuOpen(false); window.open("https://yheiw.courses.store/")} }  
                   >
                     Download App
                   </Button>
@@ -552,11 +554,12 @@ export default function AboutPageComponent() {
                   your journey towards success.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
-                  <Button className="bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl border-0 w-full sm:w-auto">
+                  <Button onClick={()=> window.open("https://yheiw.courses.store/")} className="bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl border-0 w-full sm:w-auto">
                     <Download className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                     Download App
                   </Button>
                   <Button
+                    onClick={()=> router.push("/contact")}
                     variant="outline"
                     className="border-[rgb(37,101,118)] text-[rgb(37,101,118)] hover:bg-[rgb(37,101,118)]/5 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-xl w-full sm:w-auto bg-transparent"
                   >

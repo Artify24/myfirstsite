@@ -589,7 +589,7 @@ export default function BlogPageComponent() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
                   <Input placeholder="Enter your email" className="bg-white/60 border-white/50 rounded-xl" />
-                  <Button className="bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white rounded-xl border-0">
+                  <Button onClick={()=> window.open("https://www.youtube.com/@RKDEMY")} className="bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white rounded-xl border-0">
                     Subscribe
                   </Button>
                 </div>
