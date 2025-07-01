@@ -42,7 +42,9 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ message: "Message sent successfully!" }, { status: 200 });
-  } catch (error: any) {
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any 
+  catch (error: any) {
     console.error("Email error:", error);
     return NextResponse.json(
       { message: "Failed to send message", error: error.message },
