@@ -251,7 +251,7 @@ export default function BlogPageComponent() {
               <Link href="/blog" className="text-[rgb(37,101,118)] font-medium">
                 Blog
               </Link>
-              <Button className="bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white">
+              <Button onClick={()=> window.open("https://yheiw.courses.store/")} className="bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white">
                 Download App
               </Button>
             </nav>
@@ -303,7 +303,7 @@ export default function BlogPageComponent() {
                 <div className="px-3 py-2">
                   <Button
                     className="w-full bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white"
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => {setMobileMenuOpen(false) ; window.open("https://yheiw.courses.store/")}   }
                   >
                     Download App
                   </Button>
@@ -647,20 +647,13 @@ export default function BlogPageComponent() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="https://yheiw.courses.store/"
                     className="hover:text-[rgb(37,101,118)] transition-colors"
                   >
                     Courses
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="hover:text-[rgb(37,101,118)] transition-colors"
-                  >
-                    Educators
-                  </Link>
-                </li>
+         
                 <li>
                   <Link
                     href="/success-stories"

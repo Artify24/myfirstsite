@@ -216,7 +216,7 @@ export default function AboutPageComponent() {
               <Link href="/blog" className="text-gray-600 hover:text-[rgb(37,101,118)] text-sm xl:text-base">
                 Blog
               </Link>
-              <Button className="bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm px-4 py-2">
+              <Button className="bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm px-4 py-2" onClick={()=> window.open("https://yheiw.courses.store/")}>
                 Download App
               </Button>
             </nav>
@@ -273,7 +273,7 @@ export default function AboutPageComponent() {
                 <div className="px-3 py-2">
                   <Button
                     className="w-full bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm"
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => {setMobileMenuOpen(false); window.open("https://yheiw.courses.store/")} }
                   >
                     Download App
                   </Button>
@@ -331,7 +331,7 @@ export default function AboutPageComponent() {
             >
               <h2 className="text-2xl sm:text-3xl font-bold text-slate-700">Our Story</h2>
               <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
-                RKDEMY is a premier coaching institute dedicated to Empowering Youth Through Education by providing high-quality, simplified, and result-oriented learning experiences. With a legacy of 14+ years, we have successfully trained 5,00,000+ students across 11th/12th Science, JEE/MH-CET, Engineering Diploma/Degree, and SkillTech courses, helping them build strong academic foundations and achieve their career goals. Our team of expert faculty, innovative teaching methodologies, and cutting-edge E-Learning App make education accessible, engaging, and effective for students from all backgrounds. 
+                RKDEMY is a premier coaching institute dedicated to Empowering Youth Through Education by providing high-quality, simplified, and result-oriented learning experiences. With a legacy of 14+ years, we have successfully trained 5,00,000+ students across 11th/12th Science, JEE/MH-CET, Engineering Diploma/Degree, and SkillTech courses, helping them build strong academic foundations and achieve their career goals. Our team of expert faculty, innovative teaching methodologies, and cutting-edge E-Learning App make education accessible, engaging, and effective for students from all backgrounds.  
               </p>
               <p className="text-slate-600 leading-relaxed text-sm sm:text-base">
                With our expansion into Skill Development & Placement Solutions, RKDEMY now bridges the gap between campus and corporates, providing students with industry-relevant training, career guidance, and job placement opportunities. Whether through offline coaching, online learning, or career-focused programs, RKDEMY is committed to shaping the future of students and empowering them with knowledge, confidence, and success.
@@ -610,13 +610,8 @@ export default function AboutPageComponent() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-[rgb(37,101,118)] transition-colors">
+                  <Link href="https://yheiw.courses.store/" className="hover:text-[rgb(37,101,118)] transition-colors">
                     Courses
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-[rgb(37,101,118)] transition-colors">
-                    Educators
                   </Link>
                 </li>
                 <li>

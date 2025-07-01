@@ -156,7 +156,8 @@ export default function SuccessStoriesComponent() {
               >
                 Blog
               </Link>
-              <Button className="bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm px-4 py-2">
+              <Button className="bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm px-4 py-2" onClick={() => {
+                window.open("https://yheiw.courses.store/");} }>
                 Download App
               </Button>
             </nav>
@@ -215,7 +216,10 @@ export default function SuccessStoriesComponent() {
                 <div className="px-3 py-2">
                   <Button
                     className="w-full bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm"
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() =>
+                      {setMobileMenuOpen(false)
+                      window.open("https://yheiw.courses.store/")
+                      }}
                   >
                     Download App
                   </Button>

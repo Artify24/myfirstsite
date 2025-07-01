@@ -439,7 +439,7 @@ function RKLandingPage() {
               <Link href="/blog" className="text-gray-600 hover:text-[rgb(37,101,118)] text-sm xl:text-base">
                 Blog
               </Link>
-              <Button className="bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm px-4 py-2">
+              <Button className="bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm px-4 py-2" onClick={() => window.open("https://yheiw.courses.store/")}>
                 Download App
               </Button>
             </nav>
@@ -496,7 +496,7 @@ function RKLandingPage() {
                 <div className="px-3 py-2">
                   <Button
                     className="w-full bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white text-sm"
-                    onClick={() => setMobileMenuOpen(false)}
+                    onClick={() => {setMobileMenuOpen(false); window.open("https://yheiw.courses.store/")} }
                   >
                     Download App
                   </Button>
@@ -1243,15 +1243,11 @@ function RKLandingPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-[rgb(37,101,118)] transition-colors">
+                  <Link href="https://yheiw.courses.store/" className="hover:text-[rgb(37,101,118)] transition-colors">
                     Courses
                   </Link>
                 </li>
-                <li>
-                  <Link href="#" className="hover:text-[rgb(37,101,118)] transition-colors">
-                    Educators
-                  </Link>
-                </li>
+               
                 <li>
                   <Link href="/success-stories" className="hover:text-[rgb(37,101,118)] transition-colors">
                     Success Stories

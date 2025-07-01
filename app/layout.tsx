@@ -7,7 +7,7 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata = {
   metadataBase: new URL("https://rkcoaching.com"),
   title: {
-    default: "RK Coaching App - India's #1 NEET/JEE Coaching Platform",
+    default: "RK Coaching App - Maharastras's #1 Coaching Platform",
     template: "%s | RK Coaching App",
   },
   description:

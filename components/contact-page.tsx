@@ -171,7 +171,7 @@ export default function ContactPageComponent() {
               >
                 Blog
               </Link>
-              <Button className="bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white">
+              <Button className="bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white" onClick={() => window.open("https://yheiw.courses.store/")}>
                 Download App
               </Button>
             </nav>
@@ -562,20 +562,13 @@ export default function ContactPageComponent() {
                 </li>
                 <li>
                   <Link
-                    href="#"
+                    href="https://yheiw.courses.store/"
                     className="hover:text-[rgb(37,101,118)] transition-colors"
                   >
                     Courses
                   </Link>
                 </li>
-                <li>
-                  <Link
-                    href="#"
-                    className="hover:text-[rgb(37,101,118)] transition-colors"
-                  >
-                    Educators
-                  </Link>
-                </li>
+               
                 <li>
                   <Link
                     href="/success-stories"
