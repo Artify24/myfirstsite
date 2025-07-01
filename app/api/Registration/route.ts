@@ -35,7 +35,7 @@ export async function POST(req: Request) {
     // Send email
     await transporter.sendMail({
       from: `"RKdemy Contact" <${process.env.EMAIL_USER}>`,
-      to: "yourdestination@email.com", // 🔁 Change this to your target email
+      to: process.env.EMAIL_USER,
       subject: `New Contact Form - ${name}`,
       text: emailContent,
       html: emailContent.replace(/\n/g, "<br>"),

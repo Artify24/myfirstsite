@@ -1,30 +1,21 @@
-"use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Phone,
-  Mail,
-  MessageCircle,
-  Send,
-  Globe,
-  Menu,
-  X,
-  Youtube,
-  Instagram,
-  Facebook,
-  Download,
-} from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+"use client"
+
+import type React from "react"
+
+import { useState } from "react"
+import { motion } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Phone, Mail, MessageCircle, Send, Globe, Menu, X, Youtube, Instagram, Facebook, Download } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
 const branches = [
   {
     id: 1,
-    name: "Mumbai ",
+    name: "Mumbai",
   },
   {
     id: 2,
@@ -38,7 +29,7 @@ const branches = [
     id: 4,
     name: "Borivali",
   },
-];
+]
 
 const contactMethods = [
   {
@@ -73,10 +64,11 @@ const contactMethods = [
     availability: "24/7 Available",
     color: "bg-blue-50 text-blue-600",
   },
-];
+]
 
 export default function ContactPageComponent() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -84,35 +76,35 @@ export default function ContactPageComponent() {
     branch: "",
     subject: "",
     message: "",
-  });
+  })
 
-  const handleInputChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // Handle form submission
-     const res = await fetch("/api/Registration", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    });
-    if (!res.ok) {
-      console.error("Failed to send message" );
-      return;
-    }
-    else{
-      alert("Message sent successfully!");
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const res = await fetch("/api/Registration", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const data = await res.json()
+
+      if (!res.ok) {
+        throw new Error(data.message || "Failed to send message")
+      }
+
+      alert(data.message || "Message sent successfully!")
       setFormData({
         name: "",
         email: "",
@@ -120,9 +112,14 @@ export default function ContactPageComponent() {
         branch: "",
         subject: "",
         message: "",
-      });
+      })
+    } catch (error) {
+      console.error("Error sending message:", error)
+      alert(error instanceof Error ? error.message : "Failed to send message. Please try again.")
+    } finally {
+      setIsSubmitting(false)
     }
-  };
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-teal-50/50 text-slate-800">
@@ -140,50 +137,33 @@ export default function ContactPageComponent() {
                 priority
               />
             </Link>
+
             <nav className="hidden md:flex items-center space-x-6">
-              <Link
-                href="/"
-                className="text-gray-600 hover:text-[rgb(37,101,118)]"
-              >
+              <Link href="/" className="text-gray-600 hover:text-[rgb(37,101,118)]">
                 Home
               </Link>
-              <Link
-                href="/about"
-                className="text-gray-600 hover:text-[rgb(37,101,118)]"
-              >
+              <Link href="/about" className="text-gray-600 hover:text-[rgb(37,101,118)]">
                 About
               </Link>
-              <Link
-                href="/success-stories"
-                className="text-gray-600 hover:text-[rgb(37,101,118)]"
-              >
+              <Link href="/success-stories" className="text-gray-600 hover:text-[rgb(37,101,118)]">
                 Success Stories
               </Link>
-              <Link
-                href="/contact"
-                className="text-[rgb(37,101,118)] font-medium"
-              >
+              <Link href="/contact" className="text-[rgb(37,101,118)] font-medium">
                 Contact
               </Link>
-              <Link
-                href="/blog"
-                className="text-gray-600 hover:text-[rgb(37,101,118)]"
-              >
+              <Link href="/blog" className="text-gray-600 hover:text-[rgb(37,101,118)]">
                 Blog
               </Link>
-              <Button className="bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white" onClick={() => window.open("https://yheiw.courses.store/")}>
+              <Button
+                className="bg-[rgb(37,101,118)] hover:bg-[rgb(30,85,100)] text-white"
+                onClick={() => window.open("https://yheiw.courses.store/")}
+              >
                 Download App
               </Button>
             </nav>
-            <button
-              className="md:hidden p-2"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? (
-                <X className="h-6 w-6 text-gray-600" />
-              ) : (
-                <Menu className="h-6 w-6 text-gray-600" />
-              )}
+
+            <button className="md:hidden p-2" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+              {mobileMenuOpen ? <X className="h-6 w-6 text-gray-600" /> : <Menu className="h-6 w-6 text-gray-600" />}
             </button>
           </div>
 
@@ -243,18 +223,13 @@ export default function ContactPageComponent() {
       {/* Hero Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
+          <motion.div initial={{ opacity: 0, y: 50 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <h1 className="text-4xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-slate-700 via-[rgb(37,101,118)] to-orange-600 bg-clip-text text-transparent">
               Contact RK Coaching
             </h1>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto mb-8">
-              Get in touch with us for any queries, support, or to visit our
-              branches across India. We&rsquo;re here to help you succeed in
-              your educational journey.
+              Get in touch with us for any queries, support, or to visit our branches across India. We&rsquo;re here to
+              help you succeed in your educational journey.
             </p>
           </motion.div>
         </div>
@@ -270,14 +245,9 @@ export default function ContactPageComponent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4 text-slate-700">
-              Get in Touch
-            </h2>
-            <p className="text-slate-600">
-              Choose your preferred way to contact us
-            </p>
+            <h2 className="text-3xl font-bold mb-4 text-slate-700">Get in Touch</h2>
+            <p className="text-slate-600">Choose your preferred way to contact us</p>
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactMethods.map((method, index) => (
               <motion.div
@@ -295,18 +265,10 @@ export default function ContactPageComponent() {
                     >
                       <method.icon className="h-8 w-8" />
                     </div>
-                    <h3 className="text-lg font-bold mb-2 text-slate-700">
-                      {method.title}
-                    </h3>
-                    <p className="text-slate-600 text-sm mb-3">
-                      {method.description}
-                    </p>
-                    <p className="font-semibold text-slate-700 mb-2">
-                      {method.contact}
-                    </p>
-                    <p className="text-xs text-slate-500">
-                      {method.availability}
-                    </p>
+                    <h3 className="text-lg font-bold mb-2 text-slate-700">{method.title}</h3>
+                    <p className="text-slate-600 text-sm mb-3">{method.description}</p>
+                    <p className="font-semibold text-slate-700 mb-2">{method.contact}</p>
+                    <p className="text-xs text-slate-500">{method.availability}</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -325,13 +287,8 @@ export default function ContactPageComponent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4 text-slate-700">
-              Send us a Message
-            </h2>
-            <p className="text-slate-600">
-              Fill out the form below and we&aposll get back to you within 24
-              hours
-            </p>
+            <h2 className="text-3xl font-bold mb-4 text-slate-700">Send us a Message</h2>
+            <p className="text-slate-600">Fill out the form below and we&apos;ll get back to you within 24 hours</p>
           </motion.div>
 
           <motion.div
@@ -345,9 +302,7 @@ export default function ContactPageComponent() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
-                        Full Name *
-                      </label>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
                       <Input
                         name="name"
                         value={formData.name}
@@ -355,12 +310,11 @@ export default function ContactPageComponent() {
                         placeholder="Enter your full name"
                         className="bg-white/50 border-white/50 rounded-xl"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
-                        Email Address *
-                      </label>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Email Address *</label>
                       <Input
                         name="email"
                         type="email"
@@ -369,15 +323,13 @@ export default function ContactPageComponent() {
                         placeholder="Enter your email"
                         className="bg-white/50 border-white/50 rounded-xl"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                   </div>
-
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
-                        Phone Number *
-                      </label>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Phone Number *</label>
                       <Input
                         name="phone"
                         type="tel"
@@ -387,17 +339,17 @@ export default function ContactPageComponent() {
                         placeholder="Enter your phone number"
                         className="bg-white/50 border-white/50 rounded-xl"
                         required
+                        disabled={isSubmitting}
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-slate-700 mb-2">
-                        Preferred Branch
-                      </label>
+                      <label className="block text-sm font-medium text-slate-700 mb-2">Preferred Branch</label>
                       <select
                         name="branch"
                         value={formData.branch}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 bg-white/50 border border-white/50 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-[rgb(37,101,118)]"
+                        className="w-full px-3 py-2 bg-white/50 border border-white/50 rounded-xl text-slate-700 focus:outline-none focus:ring-2 focus:ring-[rgb(37,101,118)] disabled:opacity-50"
+                        disabled={isSubmitting}
                       >
                         <option value="">Select a branch</option>
                         {branches.map((branch) => (
@@ -408,11 +360,8 @@ export default function ContactPageComponent() {
                       </select>
                     </div>
                   </div>
-
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      Subject *
-                    </label>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Subject *</label>
                     <Input
                       name="subject"
                       value={formData.subject}
@@ -420,13 +369,11 @@ export default function ContactPageComponent() {
                       placeholder="What is this regarding?"
                       className="bg-white/50 border-white/50 rounded-xl"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
-
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">
-                      Message *
-                    </label>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Message *</label>
                     <Textarea
                       name="message"
                       value={formData.message}
@@ -435,15 +382,16 @@ export default function ContactPageComponent() {
                       rows={5}
                       className="bg-white/50 border-white/50 rounded-xl"
                       required
+                      disabled={isSubmitting}
                     />
                   </div>
-
                   <Button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white py-3 rounded-xl border-0"
+                    className="w-full bg-gradient-to-r from-[rgb(37,101,118)] to-teal-600 hover:from-[rgb(30,85,100)] hover:to-teal-700 text-white py-3 rounded-xl border-0 disabled:opacity-50"
+                    disabled={isSubmitting}
                   >
                     <Send className="mr-2 h-5 w-5" />
-                    Send Message
+                    {isSubmitting ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               </CardContent>
@@ -462,14 +410,9 @@ export default function ContactPageComponent() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-4 text-slate-700">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-slate-600">
-              Quick answers to common questions about contacting us
-            </p>
+            <h2 className="text-3xl font-bold mb-4 text-slate-700">Frequently Asked Questions</h2>
+            <p className="text-slate-600">Quick answers to common questions about contacting us</p>
           </motion.div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
@@ -502,9 +445,7 @@ export default function ContactPageComponent() {
               >
                 <Card className="bg-white/60 backdrop-blur-lg border-white/50 rounded-2xl shadow-lg p-6">
                   <CardContent className="p-0">
-                    <h3 className="text-lg font-bold mb-4 text-slate-700">
-                      {faq.question}
-                    </h3>
+                    <h3 className="text-lg font-bold mb-4 text-slate-700">{faq.question}</h3>
                     <p className="text-slate-600 text-sm">{faq.answer}</p>
                   </CardContent>
                 </Card>
@@ -522,7 +463,7 @@ export default function ContactPageComponent() {
               <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-[rgb(37,101,118)] to-orange-600 bg-clip-text text-transparent">
                 <Link href="/" className="flex items-center space-x-2">
                   <Image
-                    src="/rkLogo.png?height=40&width=120"
+                    src="/placeholder.svg?height=40&width=120"
                     alt="RK Coaching Logo"
                     width={120}
                     height={40}
@@ -532,9 +473,8 @@ export default function ContactPageComponent() {
                 </Link>
               </h3>
               <p className="text-slate-600 mb-4 sm:mb-6 max-w-md leading-relaxed text-sm sm:text-base">
-                India&apos;s most trusted coaching app for competitive exams.
-                Join millions of students who achieved their dreams with our
-                expert guidance and innovative learning methods.
+                India&apos;s most trusted coaching app for competitive exams. Join millions of students who achieved
+                their dreams with our expert guidance and innovative learning methods.
               </p>
               <div className="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4">
                 <Button
@@ -548,40 +488,25 @@ export default function ContactPageComponent() {
             </div>
 
             <div>
-              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-slate-700">
-                Quick Links
-              </h4>
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-slate-700">Quick Links</h4>
               <ul className="space-y-2 text-slate-600 text-sm sm:text-base">
                 <li>
-                  <Link
-                    href="/about"
-                    className="hover:text-[rgb(37,101,118)] transition-colors"
-                  >
+                  <Link href="/about" className="hover:text-[rgb(37,101,118)] transition-colors">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="https://yheiw.courses.store/"
-                    className="hover:text-[rgb(37,101,118)] transition-colors"
-                  >
+                  <Link href="https://yheiw.courses.store/" className="hover:text-[rgb(37,101,118)] transition-colors">
                     Courses
                   </Link>
                 </li>
-               
                 <li>
-                  <Link
-                    href="/success-stories"
-                    className="hover:text-[rgb(37,101,118)] transition-colors"
-                  >
+                  <Link href="/success-stories" className="hover:text-[rgb(37,101,118)] transition-colors">
                     Success Stories
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/blog"
-                    className="hover:text-[rgb(37,101,118)] transition-colors"
-                  >
+                  <Link href="/blog" className="hover:text-[rgb(37,101,118)] transition-colors">
                     Blog
                   </Link>
                 </li>
@@ -589,39 +514,25 @@ export default function ContactPageComponent() {
             </div>
 
             <div>
-              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-slate-700">
-                Legal
-              </h4>
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-slate-700">Legal</h4>
               <ul className="space-y-2 text-slate-600 text-sm sm:text-base">
                 <li>
-                  <Link
-                    href="#"
-                    className="hover:text-[rgb(37,101,118)] transition-colors"
-                  >
+                  <Link href="#" className="hover:text-[rgb(37,101,118)] transition-colors">
                     Terms of Service
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="#"
-                    className="hover:text-[rgb(37,101,118)] transition-colors"
-                  >
+                  <Link href="#" className="hover:text-[rgb(37,101,118)] transition-colors">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="#"
-                    className="hover:text-[rgb(37,101,118)] transition-colors"
-                  >
+                  <Link href="#" className="hover:text-[rgb(37,101,118)] transition-colors">
                     Refund Policy
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    href="/contact"
-                    className="hover:text-[rgb(37,101,118)] transition-colors"
-                  >
+                  <Link href="/contact" className="hover:text-[rgb(37,101,118)] transition-colors">
                     Contact Us
                   </Link>
                 </li>
@@ -657,5 +568,5 @@ export default function ContactPageComponent() {
         </div>
       </footer>
     </div>
-  );
+  )
 }
