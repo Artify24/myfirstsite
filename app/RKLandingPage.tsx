@@ -916,7 +916,7 @@ function RKLandingPage() {
                     </div>
                     <div className="flex-1 bg-white/40 rounded-xl sm:rounded-2xl p-3 sm:p-4 backdrop-blur-sm border border-white/30">
                       <Image
-                        src="/placeholder.svg?height=300&width=200"
+                        src="/app.jpg?height=300&width=200"
                         alt="App Screenshot"
                         width={200}
                         height={300}
